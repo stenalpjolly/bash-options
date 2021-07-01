@@ -42,30 +42,5 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 }
 
-
-class VariableDeclare implements vscode.CodeActionProvider {
-
-	provideCodeActions(document: vscode.TextDocument, range: vscode.Range | vscode.Selection, context: vscode.CodeActionContext, token: vscode.CancellationToken): vscode.ProviderResult<(vscode.CodeAction | vscode.Command)[]> {
-
-		// let lineNumber = vscode.window.activeTextEditor?.selection.active.line;
-		const extractVariable = this.extractVariable(document, range);
-
-
-		return [
-			extractVariable
-		];
-	}
-
-	private extractVariable(document: vscode.TextDocument, range: vscode.Range): vscode.CodeAction {
-		const fix = new vscode.CodeAction(`Extract variable`, vscode.CodeActionKind.QuickFix);
-		fix.edit = new vscode.WorkspaceEdit();
-
-		fix.edit.insert(document.uri, new vscode.Position(1, 0), "Sample value\n");
-		// fix.edit.replace(document.uri, new vscode.Range(range.start, range.start.translate(0, 2)), emoji);
-		return fix;
-	}
-
-}
-
 // this method is called when your extension is deactivated
 export function deactivate() { }
