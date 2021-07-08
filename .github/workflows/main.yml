@@ -22,6 +22,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.2.0
+        with:
+          cache: yarn
+      
+      - name: Install dependencies
+        run: yarn install
 
       # Runs a single command using the runners shell
       - uses: lannonbr/vsce-action@2.0.0
