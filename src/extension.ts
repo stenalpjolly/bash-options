@@ -16,13 +16,20 @@ export function activate(context: vscode.ExtensionContext) {
 			// Get the text document's selection
 			let selection = editor.selection;
 			if (!selection.isEmpty) {
-				//display selection in console along with value of selection
-				console.log(`Selection: ${selection.start}, ${selection.end}`);
 
 				// Get the text document's current line
 				let line = editor.document.lineAt(selection.start.line);
 				// Get text from the selection
 				let text = editor.document.getText(selection);
+
+				if(line.lineNumber > 0) {
+					// Find previous line which does not end with a backslash
+					line = editor.document.lineAt(line.lineNumber - 1);
+					while (line.text.endsWith('\\')) {
+						line = editor.document.lineAt(line.lineNumber - 1);
+					}
+					line  = editor.document.lineAt(line.lineNumber + 1);
+				} 
 
 				// Convert line number into postiion
 				let position = new vscode.Position(line.lineNumber, 0);
