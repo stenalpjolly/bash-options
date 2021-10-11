@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Get complete text document
 		let editor = vscode.window.activeTextEditor;
-		if (editor !== undefined) {
+		if (editor) {
 			// Get the text document's selection
 			let selection = editor.selection;
 			if (!selection.isEmpty) {

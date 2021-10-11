@@ -1,9 +1,9 @@
 {
-  	"name": "shell-script-options",
+	"name": "shell-script-options",
 	"displayName": "Bash Options",
 	"publisher": "stenalpj",
 	"description": "",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"repository": {
 		"url": "https://github.com/stenalpjolly/bash-options"
 	},
@@ -17,6 +17,7 @@
         "onLanguage:shellscript"
 	],
 	"main": "./out/extension.js",
+	"browser": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
